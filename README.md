@@ -27,7 +27,7 @@ C'est un mouvement pour redonner du sens et de la beauté à l'informatique.
 Clonez ce dépôt :
 
 ```bash
-git clone <adresse_du_repo>
+git clone https://github.com/svcrobotics/novaterra-hub
 cd novaterra-hub
 
 ### Installez les dépendances :
@@ -35,17 +35,17 @@ cd novaterra-hub
 ```bash
 bundle install
 yarn install --check-files
-
+```
 ### Créez la base de données :
 
 ```bash
 rails db:create db:migrate
-
+```
 ### Lancez le serveur :
 
 ```bash
 bin/dev
-
+```
 ## Objectif du projet
 
 Former une génération de développeurs libres, compétents, responsables et solidaires.
