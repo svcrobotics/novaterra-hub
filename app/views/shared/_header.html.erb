@@ -3,7 +3,12 @@
     NovaTerra-Hub
   </div>
   <div class="space-x-4">
-    <a href="#" class="text-gray-600 hover:text-blue-500 transition">Connexion</a>
-    <a href="#" class="button-primary">S'inscrire</a>
+    <% if user_signed_in? %>
+      <%= button_to "Déconnexion", destroy_user_session_path, method: :delete, class: "text-gray-600 hover:text-red-500 transition" %>
+    <% else %>
+      <%= link_to 'Connexion', new_user_session_path, class: "text-gray-600 hover:text-blue-500 transition" %>
+      <%= link_to 'S\'inscrire', new_user_registration_path, class: "button-primary" %>
+    <% end %>
   </div>
+
 </header>
