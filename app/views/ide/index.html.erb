@@ -1,0 +1,75 @@
+<div class="flex h-screen overflow-hidden">
+
+  <!-- Sidebar Fichiers -->
+  <aside class="w-64 bg-gray-100 p-4 overflow-y-auto border-r">
+    <h2 class="text-lg font-bold mb-4 text-gray-700">Fichiers</h2>
+
+    <nav class="space-y-2">
+      <h3 class="text-sm font-semibold text-gray-500 uppercase">Models</h3>
+      <% @models.each do |model| %>
+        <%= link_to model, ide_path(file: model, type: "model"), class: "block text-blue-600 hover:underline text-sm" %>
+      <% end %>
+
+      <h3 class="text-sm font-semibold text-gray-500 uppercase mt-6">Controllers</h3>
+      <% @controllers.each do |controller| %>
+        <%= link_to controller, ide_path(file: controller, type: "controller"), class: "block text-green-600 hover:underline text-sm" %>
+      <% end %>
+
+      <h3 class="text-sm font-semibold text-gray-500 uppercase mt-6">Views</h3>
+      <% @views.each do |view| %>
+        <%= link_to view, ide_path(file: view, type: "view"), class: "block text-purple-600 hover:underline text-sm" %>
+      <% end %>
+
+      <h3 class="text-sm font-semibold text-gray-500 uppercase mt-6">Autres fichiers</h3>
+      <% @others.each do |other| %>
+        <%= link_to other, ide_path(file: other, type: "other"), class: "block text-pink-600 hover:underline text-sm" %>
+      <% end %>
+
+    </nav>
+  </aside>
+
+  <!-- Espace Code -->
+  <div class="flex-1 grid grid-cols-4 gap-4 p-6 bg-gray-50 overflow-y-auto">
+
+    <!-- Models -->
+    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
+      <h2 class="text-lg font-semibold text-gray-700 mb-4">Model</h2>
+      <% if params[:type] == "model" && @file_content %>
+        <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
+      <% else %>
+        <p class="text-gray-400">Sélectionnez un modèle.</p>
+      <% end %>
+    </div>
+
+    <!-- Controllers -->
+    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
+      <h2 class="text-lg font-semibold text-gray-700 mb-4">Controller</h2>
+      <% if params[:type] == "controller" && @file_content %>
+        <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
+      <% else %>
+        <p class="text-gray-400">Sélectionnez un contrôleur.</p>
+      <% end %>
+    </div>
+
+    <!-- Views -->
+    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
+      <h2 class="text-lg font-semibold text-gray-700 mb-4">View</h2>
+      <% if params[:type] == "view" && @file_content %>
+        <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
+      <% else %>
+        <p class="text-gray-400">Sélectionnez une vue.</p>
+      <% end %>
+    </div>
+
+    <!-- Autres fichiers -->
+    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
+      <h2 class="text-lg font-semibold text-gray-700 mb-4">Autres fichiers</h2>
+        <% if params[:type] == "other" && @file_content %>
+          <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
+        <% else %>
+          <p class="text-gray-400">Sélectionnez un fichier.</p>
+        <% end %>
+    </div>
+
+  </div>
+</div>

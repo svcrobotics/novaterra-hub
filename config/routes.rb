@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "ide/index"
   get "home/index"
   get "dashboard/home"
 
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   unauthenticated do
     root to: "home#index"
   end
+
+  get "/ide", to: "ide#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
