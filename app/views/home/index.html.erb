@@ -1,8 +1,186 @@
-<div class="flex flex-col items-center justify-center min-h-[80vh] text-center">
-  <h1 class="text-4xl font-extrabold text-gray-700 mb-6">
-    Bienvenue sur NovaTerra-Hub 🌎
-  </h1>
-  <p class="text-lg text-gray-600">
-    Apprends, crée, partage — Deviens le développeur que tu rêves d’être.
-  </p>
+<!-- app/views/pages/home.html.erb -->
+
+<div class="min-h-screen bg-gray-50 text-gray-700">
+  <!-- Header Hero -->
+  <section class="py-20 text-center bg-gradient-to-r from-blue-100 to-purple-100">
+    <h1 class="text-4xl font-bold mb-4">Bienvenue sur NovaTerra-Hub</h1>
+    <p class="text-lg mb-8">Apprendre. Comprendre. Se transformer.</p>
+    <%= link_to "Commencer gratuitement", new_user_registration_path, class: "px-6 py-3 bg-blue-400 text-white font-semibold rounded-lg shadow hover:bg-blue-500 transition" %>
+  </section>
+
+  <!-- Présentation du projet -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Pourquoi NovaTerra ?</h2>
+    <p class="mb-6">
+      NovaTerra est née d'un rêve : rendre l'apprentissage du développement accessible, humain, 
+      et profond. Ici, pas de marketing, pas de fausses promesses. Seulement la volonté sincère 
+      d'aider chacun à devenir un créateur libre et compétent du numérique.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-2">✅ Ce que NovaTerra est</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-2">
+          <li>Un apprentissage doux, progressif et visuel</li>
+          <li>Un mentor virtuel qui vous guide sans juger</li>
+          <li>Une communauté bienveillante et mondiale</li>
+          <li>Une pédagogie qui valorise l'humain avant tout</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold mb-2">🚫 Ce que NovaTerra n’est pas</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-2">
+          <li>Pas une plateforme froide et impersonnelle</li>
+          <li>Pas un système de notation stressant</li>
+          <li>Pas un lieu d'élitisme, mais de progression sincère</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Qui sommes-nous -->
+  <section class="py-16 px-6 bg-white shadow-inner">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold mb-4">Qui est derrière NovaTerra ?</h2>
+      <p class="text-gray-600">
+        NovaTerra a été fondée par un passionné autodidacte avec plus de 20 ans d'expérience, 
+        poussé par une idée simple : chacun mérite une chance de comprendre et de maîtriser 
+        l'informatique, sans barrière, sans marketing, sans artifice.
+      </p>
+    </div>
+  </section>
+
+  <!-- Fonctionnement -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">Comment ça marche ?</h2>
+    <ul class="list-disc list-inside text-gray-600 space-y-3">
+      <li>Un IDE minimaliste pour créer facilement</li>
+      <li>Des aides visuelles pour comprendre sans effort</li>
+      <li>Une progression par paliers : Débutant → Intermédiaire → Expert</li>
+      <li>Un mentor virtuel pour accompagner sans juger</li>
+      <li>Un environnement international et ouvert</li>
+    </ul>
+  </section>  
+
+  <!-- Mini Parcours d'apprentissage -->
+  <section class="py-16 px-6 bg-gray-100">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-8">Ton voyage sur NovaTerra</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Bloc 1 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-3 text-blue-600">🔰 Débuter</h3>
+          <p class="text-gray-600 text-sm">
+            Comprendre la programmation : variables, boucles, conditions... avec des images claires.
+          </p>
+        </div>
+
+        <!-- Bloc 2 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-3 text-green-600">🛠 Construire</h3>
+          <p class="text-gray-600 text-sm">
+            Apprendre Ruby on Rails, créer ton premier site web interactif, structurer un projet propre.
+          </p>
+        </div>
+
+        <!-- Bloc 3 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-3 text-purple-600">🚀 Déployer</h3>
+          <p class="text-gray-600 text-sm">
+            Dockeriser ton projet, le mettre en ligne, découvrir les bases du déploiement professionnel.
+          </p>
+        </div>
+
+        <!-- Bloc 4 -->
+        <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition">
+          <h3 class="text-xl font-semibold mb-3 text-pink-600">🌟 Devenir Expert</h3>
+          <p class="text-gray-600 text-sm">
+            Approfondir SQL, API REST, sécurité, performance, architecture avancée. Devenir autonome.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages Utilisateurs -->
+  <section class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-10">Ils parlent de NovaTerra</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Témoignage 1 -->
+        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
+          <p class="text-gray-700 italic mb-4">
+            "Je n'avais jamais touché une ligne de code. Grâce aux explications imagées de NovaTerra, 
+            j'ai construit mon premier site en 3 semaines. C’est incroyable ce que je comprends maintenant !"
+          </p>
+          <div class="text-sm font-semibold text-gray-500">— Alice, Débutante devenue développeuse junior</div>
+      </div>
+
+        <!-- Témoignage 2 -->
+        <div class="bg-gray-100 p-6 rounded-xl shadow hover:shadow-lg transition">
+          <p class="text-gray-700 italic mb-4">
+            "NovaTerra n’est pas juste une plateforme : c’est un mentor silencieux qui m'a redonné confiance.
+            J’ai enfin compris ce que signifie vraiment 'programmer'."
+          </p>
+          <div class="text-sm font-semibold text-gray-500">— David, Ancien autodidacte devenu développeur freelance</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Différences NovaTerra -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-10">Pourquoi NovaTerra est différent</h2>
+
+      <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow rounded-lg overflow-hidden">
+          <thead>
+            <tr>
+              <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Caractéristiques</th>
+              <th class="px-6 py-4 text-left text-xs font-medium text-blue-600 uppercase tracking-wider">NovaTerra</th>
+              <th class="px-6 py-4 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Plateformes classiques</th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <tr>
+              <td class="px-6 py-4">Approche visuelle intuitive</td>
+              <td class="px-6 py-4 text-green-600 font-semibold">✅</td>
+              <td class="px-6 py-4 text-gray-500">❌ Souvent abstrait</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4">Aide contextuelle intelligente</td>
+              <td class="px-6 py-4 text-green-600 font-semibold">✅</td>
+              <td class="px-6 py-4 text-gray-500">❌ Générique ou absente</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4">Progression douce et structurée</td>
+              <td class="px-6 py-4 text-green-600 font-semibold">✅</td>
+              <td class="px-6 py-4 text-gray-500">❌ Rythme imposé, peu de structure humaine</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4">Mission éthique et sociale</td>
+              <td class="px-6 py-4 text-green-600 font-semibold">✅</td>
+              <td class="px-6 py-4 text-gray-500">❌ Modèle purement commercial</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4">Communauté internationale ouverte</td>
+              <td class="px-6 py-4 text-green-600 font-semibold">✅</td>
+              <td class="px-6 py-4 text-gray-500">❌ Communautés fragmentées</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action final -->
+  <section class="py-20 text-center bg-gradient-to-r from-purple-100 to-blue-100">
+    <h2 class="text-3xl font-bold mb-6">Prêt à rejoindre NovaTerra ?</h2>
+    <%= link_to "Rejoindre l'aventure", new_user_registration_path, class: "px-8 py-4 bg-purple-400 text-white font-bold rounded-xl shadow-lg hover:bg-purple-500 transition" %>
+  </section>
+
 </div>
