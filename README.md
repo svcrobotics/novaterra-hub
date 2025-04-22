@@ -1,61 +1,95 @@
-# NovaTerra-Hub
+# 🌍 NovaTerra-Hub
 
-Bienvenue sur **NovaTerra-Hub** — un environnement libre et éthique dédié à l'apprentissage, au développement et au partage dans le monde du numérique.
+**Apprendre. Comprendre. Construire. S'élever.**
 
-## Présentation
+NovaTerra-Hub est bien plus qu'un projet d'application.  
+C'est un mouvement pour rendre l'informatique accessible, humaine et profondément formatrice.
 
-NovaTerra-Hub est une plateforme pensée pour :
+---
 
-- Créer et apprendre le développement logiciel (Ruby on Rails, HTML, CSS, JavaScript),
-- Comprendre l'architecture informatique comme un artisan maîtrise ses outils,
-- Construire des projets concrets, vivants et humains,
-- Relier développeurs, créateurs, administrateurs système autour de valeurs fortes : liberté, exigence, transmission.
+## 🚀 Pourquoi NovaTerra-Hub ?
 
-NovaTerra-Hub n'est pas seulement une application.  
-C'est un mouvement pour redonner du sens et de la beauté à l'informatique.
+Durant des décennies, apprendre la programmation a été réservé à une minorité, souvent laissée seule face à la complexité.  
+NovaTerra-Hub naît d'une conviction profonde :
 
-## Stack Technique
+> **Chacun peut devenir un créateur numérique.**  
+> **Chacun peut comprendre, évoluer et réussir.**
 
-- **Ruby on Rails 8** (framework principal)
-- **Turbo / Hotwire** (réactivité temps réel sans JavaScript complexe)
-- **TailwindCSS** (design minimaliste et élégant)
-- **SQLite3** (base de données locale pour commencer)
-- **Debian Linux** (environnement de développement natif)
+---
 
-## Installation locale
+## 🎯 Objectifs du projet
 
-Clonez ce dépôt :
+- Créer un environnement de développement **clair**, **beau** et **humain**.
+- Proposer un IDE Ruby on Rails minimaliste avec **aide intelligente** intégrée.
+- Accompagner chaque apprenant dans **une progression naturelle** : Débutant ➔ Intermédiaire ➔ Expert.
+- Offrir **des supports visuels ultra-clairs** pour expliquer les concepts (pas de blabla inutile).
+- Développer une **communauté internationale bienveillante**, traduite automatiquement, mais limitée par niveaux pour garantir l'efficacité.
 
-```bash
-git clone https://github.com/svcrobotics/novaterra-hub
-cd novaterra-hub
-```
-### Installez les dépendances :
+---
 
-```bash
-bundle install
-yarn install --check-files
-```
-### Créez la base de données :
+## 🛠 Stack Technique
 
-```bash
-rails db:create db:migrate
-```
-### Lancez le serveur :
+| Technologie | Usage |
+|:------------|:------|
+| Ruby on Rails 8 | Framework principal |
+| Turbo / Hotwire | Réactivité sans complexité |
+| TailwindCSS | Design élégant et pastel |
+| SQLite3 (local) | Base de données simple pour commencer |
+| Debian Linux | Environnement de développement initial |
 
-```bash
-bin/dev
-```
-## Objectif du projet
+---
 
-Former une génération de développeurs libres, compétents, responsables et solidaires.
-Permettre à chacun d'apprendre sérieusement, sans barrière financière, sans isolement,
-en forgeant des bases solides en programmation, en architecture, en éthique du numérique.
+## 🗺️ Vision du projet
 
-## Philosophie
+NovaTerra-Hub est construit avec :
 
-"Apprendre à coder n'est pas seulement écrire du code.
-C'est comprendre, construire, transmettre.
-C'est bâtir une Nouvelle Terre numérique."
+- **Sincérité** : Ce projet n'est pas motivé par le marketing, mais par une vraie envie d’aider.
+- **Exigence** : Chaque détail est réfléchi pour rendre l'apprentissage plus profond et durable.
+- **Liberté** : Le savoir appartient à tous. NovaTerra sera **open source** au moment venu.
 
-Made with ❤️ and freedom on Debian Linux.
+---
+
+## 📜 Philosophie
+
+"Apprendre à coder, ce n'est pas seulement écrire des lignes de code.  
+C'est comprendre, c'est construire, c'est transmettre."
+
+> **NovaTerra-Hub veut former une nouvelle génération de développeurs libres et solides.**
+
+---
+
+## 🔥 Avancement du projet
+
+Le projet suit une feuille de route claire (voir [CHANGELOG.md](./CHANGELOG.md)).
+
+Étapes majeures prévues :
+
+- Finaliser le Dashboard personnel (post-authentification)
+- Créer le mini-IDE Rails MVC
+- Lancer le premier mentor virtuel contextuel
+- Construire progressivement les parcours Débutant ➔ Expert
+- Déployer l'infrastructure multi-langue de la communauté
+
+---
+
+## 🙌 Suivre le projet
+
+Même si les contributions externes ne sont **pas ouvertes pour le moment**,  
+vous pouvez **suivre l'évolution** du projet via :
+
+- Les commits réguliers
+- Le fichier [CHANGELOG.md](./CHANGELOG.md)
+- Les notes d'avancement publiées à chaque étape clé
+
+---
+
+## 📣 Remerciements
+
+Merci à toutes les personnes passionnées qui croient encore  
+que l'informatique peut rester **libre**, **humaine** et **belle**.
+
+Ce projet est dédié à **tous ceux qui n'ont jamais eu leur chance, mais qui refusent d'abandonner**.
+
+---
+
+**Made with ❤️, rigueur et liberté sur Debian Linux.**
