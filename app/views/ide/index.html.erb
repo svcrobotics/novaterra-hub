@@ -1,75 +1,76 @@
-<div class="flex h-screen overflow-hidden">
+<div class="flex flex-col h-screen bg-gray-50">
 
-  <!-- Sidebar Fichiers -->
-  <aside class="w-64 bg-gray-100 p-4 overflow-y-auto border-r">
-    <h2 class="text-lg font-bold mb-4 text-gray-700">Fichiers</h2>
+  <!-- Onglets en haut -->
+  <div class="bg-white p-2 shadow-md flex space-x-2 overflow-x-auto">
+    <button class="bg-blue-100 px-4 py-2 rounded-lg text-gray-700">Fichier 1.rb</button>
+    <button class="bg-blue-100 px-4 py-2 rounded-lg text-gray-700">Fichier 2.html.erb</button>
+    <!-- Onglets dynamiques plus tard -->
+  </div>
 
-    <nav class="space-y-2">
-      <h3 class="text-sm font-semibold text-gray-500 uppercase">Models</h3>
+  <!-- Corps principal -->
+  <div class="flex flex-1 overflow-hidden">
+
+    <!-- Sidebar Fichiers -->
+    <aside class="w-64 bg-blue-100 p-4 overflow-y-auto shadow-md">
+      <h2 class="font-bold text-gray-700 mb-4">📂 Fichiers</h2>
       <% @models.each do |model| %>
-        <%= link_to model, ide_path(file: model, type: "model"), class: "block text-blue-600 hover:underline text-sm" %>
+        <div class="text-blue-700 hover:underline text-sm mb-2">
+          <%= link_to model, ide_path(file: model, type: "model") %>
+        </div>
       <% end %>
-
-      <h3 class="text-sm font-semibold text-gray-500 uppercase mt-6">Controllers</h3>
       <% @controllers.each do |controller| %>
-        <%= link_to controller, ide_path(file: controller, type: "controller"), class: "block text-green-600 hover:underline text-sm" %>
+        <div class="text-green-700 hover:underline text-sm mb-2">
+          <%= link_to controller, ide_path(file: controller, type: "controller") %>
+        </div>
       <% end %>
-
-      <h3 class="text-sm font-semibold text-gray-500 uppercase mt-6">Views</h3>
       <% @views.each do |view| %>
-        <%= link_to view, ide_path(file: view, type: "view"), class: "block text-purple-600 hover:underline text-sm" %>
+        <div class="text-purple-700 hover:underline text-sm mb-2">
+          <%= link_to view, ide_path(file: view, type: "view") %>
+        </div>
       <% end %>
+    </aside>
 
-      <h3 class="text-sm font-semibold text-gray-500 uppercase mt-6">Autres fichiers</h3>
-      <% @others.each do |other| %>
-        <%= link_to other, ide_path(file: other, type: "other"), class: "block text-pink-600 hover:underline text-sm" %>
-      <% end %>
+    <!-- Editeur principal -->
+    <div class="flex-1 flex flex-col m-2 overflow-hidden">
 
-    </nav>
-  </aside>
-
-  <!-- Espace Code -->
-  <div class="flex-1 grid grid-cols-4 gap-4 p-6 bg-gray-50 overflow-y-auto">
-
-    <!-- Models -->
-    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">Model</h2>
-      <% if params[:type] == "model" && @file_content %>
-        <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
-      <% else %>
-        <p class="text-gray-400">Sélectionnez un modèle.</p>
-      <% end %>
-    </div>
-
-    <!-- Controllers -->
-    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">Controller</h2>
-      <% if params[:type] == "controller" && @file_content %>
-        <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
-      <% else %>
-        <p class="text-gray-400">Sélectionnez un contrôleur.</p>
-      <% end %>
-    </div>
-
-    <!-- Views -->
-    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">View</h2>
-      <% if params[:type] == "view" && @file_content %>
-        <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
-      <% else %>
-        <p class="text-gray-400">Sélectionnez une vue.</p>
-      <% end %>
-    </div>
-
-    <!-- Autres fichiers -->
-    <div class="bg-white rounded-lg shadow p-4 overflow-auto">
-      <h2 class="text-lg font-semibold text-gray-700 mb-4">Autres fichiers</h2>
-        <% if params[:type] == "other" && @file_content %>
+      <div class="flex-1 bg-white p-4 rounded-lg shadow-md overflow-auto">
+        <h2 class="font-bold text-gray-700 mb-4">📝 Éditeur</h2>
+        <% if @file_content %>
           <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
         <% else %>
-          <p class="text-gray-400">Sélectionnez un fichier.</p>
+          <p class="text-gray-400">Sélectionnez un fichier pour commencer.</p>
         <% end %>
+      </div>
+
+      <!-- Zone TODO + Gantt en bas -->
+      <div class="flex mt-2 space-x-2">
+
+        <!-- TODO List -->
+        <div class="flex-1 bg-pink-100 p-4 rounded-lg shadow-md overflow-auto">
+          <h2 class="font-bold text-gray-700 mb-2">✅ To-do</h2>
+          <ul class="list-disc list-inside text-gray-600 text-sm">
+            <li>Créer un modèle</li>
+            <li>Écrire une action de contrôleur</li>
+            <li>Construire une vue</li>
+          </ul>
+        </div>
+
+        <!-- Gantt -->
+        <div class="flex-1 bg-yellow-100 p-4 rounded-lg shadow-md overflow-auto">
+          <h2 class="font-bold text-gray-700 mb-2">📅 Planning</h2>
+          <p class="text-gray-500 text-sm">Ton diagramme de Gantt sera affiché ici.</p>
+        </div>
+
+      </div>
+
     </div>
 
+    <!-- Aide contextuelle -->
+    <aside class="w-80 bg-green-100 p-4 overflow-y-auto shadow-md">
+      <h2 class="font-bold text-gray-700 mb-4">💡 Aide</h2>
+      <p class="text-gray-600">Ici apparaîtront les conseils et explications sur le fichier sélectionné.</p>
+    </aside>
+
   </div>
+
 </div>

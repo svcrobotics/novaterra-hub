@@ -8,4 +8,13 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ 
+ body {
+   font-family: 'Inter', sans-serif;
+   background-color: #F9FAFB;
+   color: #374151;
+ }
  

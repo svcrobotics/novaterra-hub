@@ -1,6 +1,6 @@
 class IdeController < ApplicationController
   before_action :authenticate_user!
-
+  layout "ide"
   def index
     @models = Dir.glob(Rails.root.join("app/models/**/*.rb")).map { |f| File.basename(f) }
     @controllers = Dir.glob(Rails.root.join("app/controllers/**/*.rb")).map { |f| File.basename(f) }

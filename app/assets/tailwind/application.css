@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 /* Global NovaTerra-Hub Styles */
-body {
-  @apply bg-gray-50 text-gray-700 font-sans;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #F9FAFB;
   font-family: 'Inter', sans-serif;
+  color: #374151;
 }
 
 /* Titres */
