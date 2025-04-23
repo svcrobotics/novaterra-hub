@@ -1,0 +1,90 @@
+/* CodeMirror NovaTerra Theme */
+.cm-s-novaterra.CodeMirror {
+  background: #F9FAFB;
+  color: #2E2E2E;
+  font-family: Monaco, 'Courier New', Courier, monospace;
+  font-size: 15px;
+  height: auto;
+  line-height: 1.5;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.cm-s-novaterra .cm-comment { color: #83C5BE; font-style: italic; }
+.cm-s-novaterra .cm-keyword { color: #7C83FD; font-weight: bold; }
+.cm-s-novaterra .cm-string  { color: #F7A072; }
+.cm-s-novaterra .cm-number  { color: #F5C7B8; }
+.cm-s-novaterra .cm-def     { color: #56B4D3; }
+.cm-s-novaterra .cm-variable { color: #2E2E2E; }
+.cm-s-novaterra .cm-operator { color: #888; }
+.cm-s-novaterra .cm-meta    { color: #999; font-style: italic; }
+.cm-s-novaterra .cm-builtin { color: #A17CBD; }
+.cm-s-novaterra .CodeMirror-cursor { border-left: 2px solid #7C83FD; }
+
+/* Nom du thème : novaterra */
+.cm-s-novaterra.CodeMirror {
+  background-color: #FAFAFA;
+  color: #2E2E2E;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Ligne active */
+.cm-s-novaterra .CodeMirror-activeline-background {
+  background: #f0f8ff;
+}
+
+/* Numéros de lignes */
+.cm-s-novaterra .CodeMirror-linenumber {
+  color: #a0aec0;
+}
+
+/* Commentaires */
+.cm-s-novaterra .cm-comment {
+  color: #9CA3AF; /* gris clair */
+  font-style: italic;
+}
+
+/* Mots-clés Ruby, JS... */
+.cm-s-novaterra .cm-keyword {
+  color: #6366F1; /* Indigo doux */
+  font-weight: bold;
+}
+
+/* Chaînes de caractères */
+.cm-s-novaterra .cm-string {
+  color: #10B981; /* Vert menthe */
+}
+
+/* Variables */
+.cm-s-novaterra .cm-variable {
+  color: #3B82F6; /* Bleu doux */
+}
+
+/* Noms de fonctions */
+.cm-s-novaterra .cm-def {
+  color: #EC4899; /* Rose */
+  font-weight: bold;
+}
+
+/* Symboles */
+.cm-s-novaterra .cm-atom {
+  color: #FB923C; /* Orange doux */
+}
+
+/* Nombres */
+.cm-s-novaterra .cm-number {
+  color: #F59E0B; /* Jaune orangé */
+}
+
+/* Opérateurs */
+.cm-s-novaterra .cm-operator {
+  color: #111827; /* Presque noir */
+}
+
+/* Mots spéciaux comme 'self', 'super' */
+.cm-s-novaterra .cm-builtin {
+  color: #8B5CF6;
+}

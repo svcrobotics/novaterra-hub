@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   end
 
   get "/ide", to: "ide#index"
+  post "ide/update", to: "ide#update", as: :ide_update
+
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

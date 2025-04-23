@@ -1,76 +1,152 @@
-<div class="flex flex-col h-screen bg-gray-50">
+<div class="flex flex-col h-screen bg-[#FAFAFA]">
 
-  <!-- Onglets en haut -->
-  <div class="bg-white p-2 shadow-md flex space-x-2 overflow-x-auto">
-    <button class="bg-blue-100 px-4 py-2 rounded-lg text-gray-700">Fichier 1.rb</button>
-    <button class="bg-blue-100 px-4 py-2 rounded-lg text-gray-700">Fichier 2.html.erb</button>
-    <!-- Onglets dynamiques plus tard -->
+  <!-- Barre des Onglets -->
+  <div class="flex bg-gray-100 shadow-inner p-2 space-x-2 overflow-x-auto">
+    <% if params[:file].present? %>
+      <div class="px-4 py-2 bg-blue-100 text-blue-800 rounded-md font-semibold shadow">
+        <%= params[:file] %>
+      </div>
+    <% else %>
+      <div class="px-4 py-2 bg-gray-200 text-gray-500 rounded-md italic">
+        Aucun fichier ouvert
+      </div>
+    <% end %>
   </div>
 
-  <!-- Corps principal -->
+  <!-- Corps Principal -->
   <div class="flex flex-1 overflow-hidden">
 
-    <!-- Sidebar Fichiers -->
-    <aside class="w-64 bg-blue-100 p-4 overflow-y-auto shadow-md">
-      <h2 class="font-bold text-gray-700 mb-4">📂 Fichiers</h2>
-      <% @models.each do |model| %>
-        <div class="text-blue-700 hover:underline text-sm mb-2">
-          <%= link_to model, ide_path(file: model, type: "model") %>
-        </div>
-      <% end %>
-      <% @controllers.each do |controller| %>
-        <div class="text-green-700 hover:underline text-sm mb-2">
-          <%= link_to controller, ide_path(file: controller, type: "controller") %>
-        </div>
-      <% end %>
-      <% @views.each do |view| %>
-        <div class="text-purple-700 hover:underline text-sm mb-2">
-          <%= link_to view, ide_path(file: view, type: "view") %>
-        </div>
+    <!-- Explorer Fichiers -->
+    <aside id="explorer" class="w-64 bg-[#ECF4FF] p-4 overflow-y-auto border-r border-gray-200">
+      <h2 class="text-lg font-bold text-gray-700 mb-4">📂 Explorer</h2>
+      <% if @file_tree.present? %>
+        <ul class="space-y-2">
+          <% @file_tree.each do |node| %>
+            <%= render partial: "file_node", locals: { node: node } %>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="text-gray-500">Aucun fichier</p>
       <% end %>
     </aside>
 
-    <!-- Editeur principal -->
-    <div class="flex-1 flex flex-col m-2 overflow-hidden">
+    <!-- Barre de redimensionnement -->
+    <div id="resizer-left" class="w-2 cursor-col-resize bg-blue-200 hover:bg-blue-300"></div>
 
-      <div class="flex-1 bg-white p-4 rounded-lg shadow-md overflow-auto">
-        <h2 class="font-bold text-gray-700 mb-4">📝 Éditeur</h2>
-        <% if @file_content %>
-          <pre class="text-sm text-gray-800 whitespace-pre-wrap"><%= @file_content %></pre>
+    <!-- Zone Éditeur + Footer -->
+    <div class="flex flex-col flex-1">
+
+      <!-- Éditeur -->
+      <div class="flex-1 m-2 p-4 rounded-2xl bg-white shadow-md overflow-hidden flex flex-col">
+
+        <!-- En-tête de l’éditeur -->
+        <div class="flex flex-wrap justify-between items-center gap-4 mb-4">
+          <h2 class="text-lg font-bold text-gray-700">📝 Éditeur</h2>
+
+          <%= form_with url: ide_update_path, method: :post, local: true, class: "flex flex-wrap gap-4 items-center w-full md:w-auto" do %>
+            <%= hidden_field_tag :file, @current_file %>
+            <%= hidden_field_tag :opened_files, @opened_files&.join(',') %>
+            <%= hidden_field_tag :file_mtime, @file_mtime %>
+
+            <!-- Thème -->
+            <div>
+              <label for="theme-selector" class="mr-1 font-medium text-sm">🎨 Thème :</label>
+              <select id="theme-selector" class="rounded border-gray-300 px-2 py-1 text-sm">
+                <option value="default">Default</option>
+                <option value="elegant">Elegant</option>
+                <option value="neo">Neo</option>
+                <option value="material">Material</option>
+                <option value="solarized">Solarized</option>
+                <option value="dracula">Dracula</option>
+                <option value="material-darker">Material Darker</option>
+                <option value="darcula">Darcula</option>
+                <option value="one-dark">One Dark</option>
+                <option value="3024-night">3024 Night</option>
+                <option value="novaterra" selected>NovaTerra</option>
+              </select>
+            </div>
+
+            <!-- Police -->
+            <div>
+              <label for="font-selector" class="mr-1 font-medium text-sm">🔤 Police :</label>
+              <select id="font-selector" class="rounded border-gray-300 px-2 py-1 text-sm">
+                <option value="Monaco" selected>Monaco</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Fira Code">Fira Code</option>
+                <option value="Source Code Pro">Source Code Pro</option>
+                <option value="Menlo">Menlo</option>
+              </select>
+            </div>
+
+            <!-- Taille -->
+            <div>
+              <label for="font-size-selector" class="mr-1 font-medium text-sm">🔠 Taille :</label>
+              <select id="font-size-selector" class="rounded border-gray-300 px-2 py-1 text-sm">
+                <option value="12px">12px</option>
+                <option value="14px">14px</option>
+                <option value="16px" selected>16px</option>
+                <option value="18px">18px</option>
+                <option value="20px">20px</option>
+              </select>
+            </div>
+
+            <!-- Bouton Enregistrer -->
+            <div>
+              <%= submit_tag "💾 Enregistrer", class: "px-4 py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg shadow-md transition text-sm" %>
+            </div>
+
+          <%end %>
+        </div>
+
+        <% if @file_content.present? && @current_file.present? %>
+          <div class="flex-1 overflow-hidden mb-4">
+            <div class="w-full max-w-5xl mx-auto h-full">
+              <%= text_area_tag :content, @file_content, id: "content", class: "hidden" %>
+              <div id="code-editor" class="w-full h-full"></div>
+            </div>
+          </div>
+
         <% else %>
-          <p class="text-gray-400">Sélectionnez un fichier pour commencer.</p>
+          <div class="flex items-center justify-center h-full text-gray-400 italic">
+            Sélectionne un fichier pour commencer 📄
+          </div>
         <% end %>
+
       </div>
 
-      <!-- Zone TODO + Gantt en bas -->
-      <div class="flex mt-2 space-x-2">
-
-        <!-- TODO List -->
-        <div class="flex-1 bg-pink-100 p-4 rounded-lg shadow-md overflow-auto">
-          <h2 class="font-bold text-gray-700 mb-2">✅ To-do</h2>
-          <ul class="list-disc list-inside text-gray-600 text-sm">
+      <!-- Footer : ToDo et Gantt -->
+      <div class="h-40 bg-white border-t border-gray-200 grid grid-cols-2 rounded-t-xl overflow-hidden">
+        <!-- ToDo -->
+        <div class="p-4 overflow-y-auto border-r">
+          <h3 class="text-lg font-semibold text-gray-700 mb-2">🗒️ ToDo</h3>
+          <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
             <li>Créer un modèle</li>
-            <li>Écrire une action de contrôleur</li>
-            <li>Construire une vue</li>
+            <li>Écrire une migration</li>
+            <li>Configurer les routes</li>
           </ul>
         </div>
 
         <!-- Gantt -->
-        <div class="flex-1 bg-yellow-100 p-4 rounded-lg shadow-md overflow-auto">
-          <h2 class="font-bold text-gray-700 mb-2">📅 Planning</h2>
-          <p class="text-gray-500 text-sm">Ton diagramme de Gantt sera affiché ici.</p>
+        <div class="p-4 overflow-y-auto">
+          <h3 class="text-lg font-semibold text-gray-700 mb-2">📈 Gantt</h3>
+          <p class="text-gray-500 text-sm">Planification en cours...</p>
         </div>
-
       </div>
 
     </div>
 
-    <!-- Aide contextuelle -->
-    <aside class="w-80 bg-green-100 p-4 overflow-y-auto shadow-md">
-      <h2 class="font-bold text-gray-700 mb-4">💡 Aide</h2>
-      <p class="text-gray-600">Ici apparaîtront les conseils et explications sur le fichier sélectionné.</p>
+    <!-- Barre de redimensionnement droite -->
+    <div id="resizer-right" class="w-2 cursor-col-resize bg-green-200 hover:bg-green-300"></div>
+
+    <!-- Aide Contextuelle -->
+    <aside id="aide" class="w-80 bg-[#E8F9F1] p-4 overflow-y-auto border-l border-gray-200">
+      <h2 class="text-lg font-bold text-gray-700 mb-4">💡 Aide</h2>
+      <p class="text-gray-600 text-sm leading-relaxed">
+        Conseils contextuels en fonction du fichier sélectionné.
+      </p>
     </aside>
 
   </div>
 
 </div>
+

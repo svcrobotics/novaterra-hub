@@ -1,20 +1,18 @@
 /*
  * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
  */
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
- 
- body {
-   font-family: 'Inter', sans-serif;
-   background-color: #F9FAFB;
-   color: #374151;
- }
- 
+
+/* Déclare d'abord la font */
+@font-face {
+  font-family: 'Monaco';
+  src: url('/Monaco.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Puis applique-la */
+body {
+  font-family: 'Menlo', 'Monaco', 'Courier New', Courier, monospace;
+  background-color: #F9FAFB;
+  color: #374151;
+}

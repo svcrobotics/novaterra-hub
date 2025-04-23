@@ -1,0 +1,49 @@
+<li>
+  <% if node[:type] == :folder %>
+    <details class="ml-2 group">
+      <summary class="cursor-pointer text-blue-600 font-semibold hover:underline">
+        📁 <%= node[:name] %>
+      </summary>
+      <ul class="pl-4">
+        <% node[:children].sort_by { |child| child[:name].downcase }.each do |child| %>
+          <%= render partial: "file_node", locals: { node: child } %>
+        <% end %>
+      </ul>
+    </details>
+  <% else %>
+    <% icon = "📄" %>
+    <% ext = File.extname(node[:name]).downcase %>
+    <% icon =
+      case ext
+      when ".rb" then "🟥"
+      when ".erb", ".html.erb" then "🧩"
+      when ".js" then "🟨"
+      when ".ts" then "🔷"
+      when ".html", ".htm" then "🌐"
+      when ".css", ".scss", ".sass" then "🎨"
+      when ".yml", ".yaml" then "⚙️"
+      when ".json" then "🧾"
+      when ".md" then "📘"
+      when ".txt" then "📄"
+      when ".xml" then "🧷"
+      when ".csv" then "📊"
+      when ".pdf" then "📕"
+      when ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp" then "🖼️"
+      when ".env" then "🌱"
+      when ".lock" then "🔒"
+      when ".log" then "📝"
+      when ".sh", ".bash", ".zsh" then "💻"
+      when ".sql" then "🗄️"
+      when ".db" then "🧬"
+      when ".zip", ".tar", ".gz", ".rar" then "🗜️"
+      else "📄"
+      end
+    %>
+
+    <%= link_to ide_path(file: node[:path], opened_files: @opened_files&.join(',')), 
+              class: "block text-sm text-gray-700 hover:text-blue-500 pl-6", 
+              data: { turbo: false } do %>
+      <%= "#{icon} #{node[:name]}" %>
+    <% end %>
+  <% end %>
+</li>
