@@ -66,6 +66,9 @@ Le projet suit une feuille de route claire (voir [CHANGELOG.md](./CHANGELOG.md))
 
 - Finaliser le Dashboard personnel (post-authentification)
 - Créer le mini-IDE Rails MVC
+
+![Aperçu de l’IDE avec panneaux redimensionnables](docs/images/novaterra-ide-1.png)
+
 - Lancer le premier mentor virtuel contextuel
 - Construire progressivement les parcours Débutant ➔ Expert
 - Déployer l'infrastructure multi-langue de la communauté

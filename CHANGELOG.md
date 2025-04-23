@@ -26,12 +26,15 @@ Ce fichier retrace l'évolution du projet NovaTerra-Hub, étape par étape, en t
 - Mini-parcours d'apprentissage en 4 étapes
 - Témoignages utilisateurs fictifs
 - Appel à l'action pour l'inscription
+- Construction du Dashboard personnel (après connexion)
+- Ajout du redimensionnement des panneaux dans l’IDE
+- Intégration de la coloration syntaxique dans l’éditeur de code
 
+![Aperçu de l’IDE avec panneaux redimensionnables](docs/images/novaterra-ide-1.png)
 ---
 
 ## 📈 Prochaines étapes prévues
 
-- Construction du Dashboard personnel (après connexion)
 - Mise en place du mini-IDE intelligent Rails MVC
 - Première version du mentor virtuel
 - Structuration des parcours Débutant / Intermédiaire / Expert
