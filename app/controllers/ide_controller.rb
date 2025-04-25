@@ -25,7 +25,6 @@ class IdeController < ApplicationController
     end
   end
 
-
   def update
     Rails.logger.warn "📩 Params reçus : #{params.inspect}"
     current_project_root!
@@ -42,12 +41,17 @@ class IdeController < ApplicationController
     if current_mtime != submitted_mtime
       flash[:alert] = "Le fichier a été modifié ailleurs. Enregistrement annulé ❌"
     else
-      File.write(file_path, params[:content])
-      flash[:notice] = "Fichier enregistré avec succès ✅"
+      if params[:content].blank?
+        flash[:alert] = "Le contenu du fichier est vide, enregistrement annulé ❌"
+      else
+        File.write(file_path, params[:content])
+        flash[:notice] = "Fichier enregistré avec succès ✅"
+      end
     end
 
     redirect_to ide_path(file: params[:file], opened_files: params[:opened_files], project: params[:project])
   end
+
 
 
   private

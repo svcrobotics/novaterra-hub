@@ -13,6 +13,14 @@
     <% end %>
   </div>
 
+  <% if flash[:notice] || flash[:alert] %>
+    <div id="flash-message" class="p-3 rounded text-sm font-medium shadow-md mb-4
+              <%= flash[:notice] ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' %>">
+      <%= flash[:notice] || flash[:alert] %>
+    </div>
+  <% end %>
+
+
   <!-- Zone principale -->
   <div class="flex flex-1 overflow-hidden" id="container">
 
@@ -100,9 +108,6 @@
           <!-- Bouton + Avertissement -->
           <div class="flex items-center justify-end mt-2">
             <%= submit_tag "💾 Enregistrer", class: "bg-green-100 hover:bg-green-200 text-green-700 px-4 py-2 rounded-lg font-medium shadow-sm transition" %>
-            <div id="unsaved-indicator" class="hidden text-yellow-600 text-sm font-semibold">
-              ⚠️ Modifications non enregistrées
-            </div>
           </div>
 
         <% end %>

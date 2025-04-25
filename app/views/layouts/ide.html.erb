@@ -42,7 +42,13 @@
         // CodeMirror
         const textarea = document.getElementById("content");
 
+        
+
         if (textarea) {
+          const existingEditor = document.querySelector(".CodeMirror");
+          if (existingEditor) {
+            existingEditor.remove(); // Supprime l’ancien éditeur s’il existe
+          }
           const editor = CodeMirror.fromTextArea(textarea, {
             lineNumbers: true,
             mode: "ruby",
@@ -146,5 +152,19 @@
         });
       });
     </script>
+
+    <script>
+      document.addEventListener("turbo:load", function () {
+        const flash = document.getElementById("flash-message");
+        if (flash) {
+          setTimeout(() => {
+            flash.style.transition = "opacity 0.6s";
+            flash.style.opacity = "0";
+            setTimeout(() => flash.remove(), 600);
+          }, 3000);
+        }
+      });
+    </script> 
+
   </body>
 </html>
