@@ -14,7 +14,6 @@ Ce fichier retrace l'évolution du projet NovaTerra-Hub, étape par étape, en t
 ## [2025-04-22] Authentification utilisateur
 
 - Installation de la gem `devise`
-- Ajout du champ `username` aux utilisateurs
 - Création de la page d'inscription et de connexion
 - Gestion des sessions avec Devise
 

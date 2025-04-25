@@ -1,0 +1,15 @@
+<%= form_with model: @projet, local: true do |f| %>
+  <div class="mb-4">
+    <%= f.label :nom, "Nom du projet", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :nom, class: "mt-1 block w-full border-gray-300 rounded-md shadow-sm" %>
+  </div>
+
+  <p class="text-sm text-gray-500 italic">
+    Le projet sera créé dans ton espace personnel :  
+    <code>/home/novaterra/users/<%= current_user.username %>/mon_projet</code>
+  </p>
+
+  <div class="mt-6">
+    <%= f.submit "Créer", class: "w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg shadow" %>
+  </div>
+<% end %>

@@ -1,49 +1,52 @@
 <li>
   <% if node[:type] == :folder %>
     <details class="ml-2 group">
-      <summary class="cursor-pointer text-blue-600 font-semibold hover:underline">
-        📁 <%= node[:name] %>
+      <summary class="cursor-pointer text-[14px] text-gray-800 font-semibold hover:underline transition">
+        <span class="text-[14px]">📁</span> <%= node[:name] %>
       </summary>
-      <ul class="pl-4">
+      <ul class="pl-4 space-y-1">
         <% node[:children].sort_by { |child| child[:name].downcase }.each do |child| %>
           <%= render partial: "file_node", locals: { node: child } %>
         <% end %>
       </ul>
     </details>
   <% else %>
-    <% icon = "📄" %>
-    <% ext = File.extname(node[:name]).downcase %>
-    <% icon =
-      case ext
-      when ".rb" then "🟥"
-      when ".erb", ".html.erb" then "🧩"
-      when ".js" then "🟨"
-      when ".ts" then "🔷"
-      when ".html", ".htm" then "🌐"
+    <% icon = case File.extname(node[:name]).downcase
+      when ".rb"       then "🟥"
+      when ".erb"      then "🧩"
+      when ".html", ".htm", ".html.erb" then "🌐"
+      when ".js"       then "🟨"
+      when ".ts"       then "🔷"
       when ".css", ".scss", ".sass" then "🎨"
       when ".yml", ".yaml" then "⚙️"
-      when ".json" then "🧾"
-      when ".md" then "📘"
-      when ".txt" then "📄"
-      when ".xml" then "🧷"
-      when ".csv" then "📊"
-      when ".pdf" then "📕"
+      when ".json"     then "🧾"
+      when ".md"       then "📘"
+      when ".txt"      then "📄"
+      when ".xml"      then "🧷"
+      when ".csv"      then "📊"
+      when ".pdf"      then "📕"
       when ".png", ".jpg", ".jpeg", ".gif", ".svg", ".webp" then "🖼️"
-      when ".env" then "🌱"
-      when ".lock" then "🔒"
-      when ".log" then "📝"
+      when ".env"      then "🌱"
+      when ".lock"     then "🔒"
+      when ".log"      then "📝"
       when ".sh", ".bash", ".zsh" then "💻"
-      when ".sql" then "🗄️"
-      when ".db" then "🧬"
+      when ".sql"      then "🗄️"
+      when ".db"       then "🧬"
       when ".zip", ".tar", ".gz", ".rar" then "🗜️"
       else "📄"
-      end
-    %>
+    end %>
 
-    <%= link_to ide_path(file: node[:path], opened_files: @opened_files&.join(',')), 
-              class: "block text-sm text-gray-700 hover:text-blue-500 pl-6", 
-              data: { turbo: false } do %>
-      <%= "#{icon} #{node[:name]}" %>
+    <% is_active = @current_file == node[:path] %>
+
+    <%= link_to ide_path(
+          file: node[:path],
+          opened_files: @opened_files&.join(','),
+          project: @project_root.to_s
+        ),
+        class: "block text-[14px] px-2 py-1 rounded-md transition pl-6 #{is_active ? 'bg-blue-100 font-semibold text-black' : 'text-black hover:bg-gray-100'}",
+        data: { turbo: false },
+        title: node[:path] do %>
+      <span class="text-[14px]"><%= icon %></span> <%= node[:name] %>
     <% end %>
   <% end %>
 </li>

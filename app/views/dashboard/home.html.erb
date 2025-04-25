@@ -67,11 +67,30 @@
         <!-- Carte Dernier Projet -->
         <div class="bg-white rounded-lg shadow p-6">
           <h2 class="text-xl font-semibold text-gray-700 mb-2">Dernier projet</h2>
-          <p class="text-gray-500">Tu n’as pas encore de projet actif.</p>
-          <div class="mt-4">
-            <%= link_to "Créer un projet", ide_path, class: "button-primary" %>
-          </div>
+
+          <% if current_user.projets.any? %>
+            <% projet = current_user.projets.last %>
+            <p class="text-gray-600 mb-2">
+              <strong><%= projet.nom %></strong><br>
+              <span class="text-sm text-gray-500"><%= projet.chemin %></span>
+            </p>
+
+            <div class="flex gap-4 mt-4">
+              <%= link_to "👁️ Afficher", ide_path(project: projet.chemin),
+                class: "bg-blue-100 hover:bg-blue-200 text-blue-800 px-4 py-2 rounded-lg font-medium shadow-sm transition" %>
+              <%= link_to "🗑️ Supprimer", projet_path(projet),
+                method: :delete,
+                data: { confirm: "Es-tu sûr de vouloir supprimer ce projet ?" },
+                class: "bg-red-100 hover:bg-red-200 text-red-700 px-4 py-2 rounded-lg font-medium shadow-sm transition" %>
+            </div>
+          <% else %>
+            <p class="text-gray-500">Tu n’as pas encore de projet actif.</p>
+            <div class="mt-4">
+              <%= link_to "Créer un projet", new_projet_path, class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold shadow" %>
+            </div>
+          <% end %>
         </div>
+
 
         <!-- Carte ToDo -->
         <div class="bg-white rounded-lg shadow p-6">

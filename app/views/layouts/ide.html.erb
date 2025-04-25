@@ -16,11 +16,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/solarized.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/twilight.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/tomorrow-night-eighties.min.css">
+
     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material-darker.min.css" %>
     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/darcula.min.css" %>
     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/one-dark.min.css" %>
     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/3024-night.min.css" %>
     <%= stylesheet_link_tag "codemirror-novaterra", media: "all" %>
+    <%= stylesheet_link_tag "espresso-libre", media: "all" %>
+    <%= stylesheet_link_tag "mac-classic", media: "all" %>
 
     <!-- CodeMirror JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
@@ -33,43 +38,7 @@
   <body class="h-screen w-screen overflow-hidden bg-gray-50">
     <%= yield %>
     <script>
-      function makeResizable(resizerId, leftPanelSelector, rightPanelSelector, direction = 'horizontal') {
-        const resizer = document.getElementById(resizerId);
-        const leftPanel = document.querySelector(leftPanelSelector);
-        const rightPanel = document.querySelector(rightPanelSelector);
-
-        let startX, startWidthLeft, startWidthRight;
-
-        resizer.addEventListener("mousedown", function (e) {
-          startX = e.clientX;
-          startWidthLeft = leftPanel.offsetWidth;
-          startWidthRight = rightPanel.offsetWidth;
-
-          document.addEventListener("mousemove", resize);
-          document.addEventListener("mouseup", stopResize);
-        });
-
-        function resize(e) {
-          const dx = e.clientX - startX;
-          leftPanel.style.width = (startWidthLeft + dx) + "px";
-          rightPanel.style.width = (startWidthRight - dx) + "px";
-        }
-
-        function stopResize() {
-          document.removeEventListener("mousemove", resize);
-          document.removeEventListener("mouseup", stopResize);
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        makeResizable("resizer-right", ".flex-col.flex-1", "aside.w-80");
-        makeResizable("resizer-left", "aside.w-64", ".flex-col.flex-1");
-      });
-    </script>
-
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("turbo:load", function () {
         // CodeMirror
         const textarea = document.getElementById("content");
 
@@ -82,7 +51,13 @@
             tabSize: 2
           });
 
-          editor.setSize("100%", "70vh");
+          editor.setSize("100%", "calc(100vh - 220px)");
+
+
+          // Synchroniser à chaque changement
+          editor.on("change", () => {
+            textarea.value = editor.getValue();
+          });
 
           // Appliquer les valeurs par défaut
           editor.getWrapperElement().style.fontFamily = "Monaco";
@@ -142,5 +117,34 @@
       });
     </script>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const resizer = document.getElementById('resizer');
+        const leftSide = document.getElementById('explorer');
+        const container = document.getElementById('container');
+
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', function(e) {
+          isResizing = true;
+          document.body.style.cursor = "col-resize";
+        });
+
+        document.addEventListener('mousemove', function(e) {
+          if (!isResizing) return;
+
+          let newWidth = e.clientX;
+          if (newWidth < 150) newWidth = 150; // minimum
+          if (newWidth > 600) newWidth = 600; // maximum
+
+          leftSide.style.width = `${newWidth}px`;
+        });
+
+        document.addEventListener('mouseup', function() {
+          isResizing = false;
+          document.body.style.cursor = "default";
+        });
+      });
+    </script>
   </body>
 </html>

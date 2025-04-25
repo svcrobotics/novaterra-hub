@@ -1,0 +1,20 @@
+/* Mac Classic inspired theme */
+.cm-s-mac-classic.CodeMirror {
+  background: #fefefe;
+  color: #000;
+  font-family: Monaco, Courier, monospace;
+}
+
+.cm-s-mac-classic .CodeMirror-cursor {
+  border-left: 1px solid black;
+}
+
+.cm-s-mac-classic .CodeMirror-selected {
+  background: #dcdcdc;
+}
+
+.cm-s-mac-classic .cm-comment   { color: #999; }
+.cm-s-mac-classic .cm-keyword   { color: #0000aa; font-weight: bold; }
+.cm-s-mac-classic .cm-string    { color: #a31515; }
+.cm-s-mac-classic .cm-variable  { color: #333; }
+.cm-s-mac-classic .cm-number    { color: #1c00cf; }

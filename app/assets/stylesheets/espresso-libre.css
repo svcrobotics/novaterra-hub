@@ -1,0 +1,117 @@
+/* Espresso Libre Theme for CodeMirror */
+
+.cm-s-espresso-libre.CodeMirror {
+  background: #2A211C;
+  color: #BDAE9D;
+  font-family: 'Monaco', 'Courier New', Courier, monospace;
+}
+
+.cm-s-espresso-libre .CodeMirror-cursor {
+  border-left: 1px solid #889AFF;
+}
+
+.cm-s-espresso-libre .CodeMirror-selected {
+  background: #C3DCFF;
+}
+
+.cm-s-espresso-libre .CodeMirror-line::selection, 
+.cm-s-espresso-libre .CodeMirror-line > span::selection, 
+.cm-s-espresso-libre .CodeMirror-line > span > span::selection {
+  background: #C3DCFF;
+}
+
+.cm-s-espresso-libre .CodeMirror-line::-moz-selection, 
+.cm-s-espresso-libre .CodeMirror-line > span::-moz-selection, 
+.cm-s-espresso-libre .CodeMirror-line > span > span::-moz-selection {
+  background: #C3DCFF;
+}
+
+.cm-s-espresso-libre .cm-comment {
+  color: #0066FF;
+  font-style: italic;
+}
+
+.cm-s-espresso-libre .cm-keyword, 
+.cm-s-espresso-libre .cm-storage {
+  color: #43A8ED;
+  font-weight: bold;
+}
+
+.cm-s-espresso-libre .cm-number {
+  color: #44AA43;
+}
+
+.cm-s-espresso-libre .cm-constant {
+  color: #C5656B;
+  font-weight: bold;
+}
+
+.cm-s-espresso-libre .cm-builtin {
+  color: #585CF6;
+  font-weight: bold;
+}
+
+.cm-s-espresso-libre .cm-variable {
+  color: #318495;
+}
+
+.cm-s-espresso-libre .cm-string {
+  color: #049B0A;
+}
+
+.cm-s-espresso-libre .cm-string-2 {
+  color: #2FE420;
+}
+
+.cm-s-espresso-libre .cm-def {
+  color: #FF9358;
+  font-weight: bold;
+}
+
+.cm-s-espresso-libre .cm-type {
+  text-decoration: underline;
+}
+
+.cm-s-espresso-libre .cm-variable-2, 
+.cm-s-espresso-libre .cm-variable-3 {
+  font-style: italic;
+}
+
+.cm-s-espresso-libre .cm-property {
+  color: #8B8E9C;
+}
+
+.cm-s-espresso-libre .cm-operator {
+  color: #687687;
+}
+
+.cm-s-espresso-libre .cm-error {
+  background-color: #990000;
+  color: #FFFFFF;
+}
+
+.cm-s-espresso-libre .cm-meta {
+  color: #8F7E65;
+}
+
+.cm-s-espresso-libre .cm-attribute {
+  font-style: italic;
+}
+
+.cm-s-espresso-libre .cm-tag {
+  color: #43A8ED;
+}
+
+.cm-s-espresso-libre .cm-header {
+  font-weight: bold;
+}
+
+.cm-s-espresso-libre .cm-link {
+  color: #43A8ED;
+  text-decoration: underline;
+}
+
+.cm-s-espresso-libre .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: #00AF0E;
+}

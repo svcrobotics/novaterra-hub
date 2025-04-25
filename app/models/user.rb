@@ -10,4 +10,6 @@ class User < ApplicationRecord
   def login
     @login || username || email
   end
+
+  has_many :projets
 end
